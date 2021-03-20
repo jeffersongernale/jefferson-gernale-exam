@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import youtube_api from "./sync_youtube/youtube_api";
+import youtube_channels from "./channels/youtube_channels";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -11,6 +11,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    youtube_api
+    youtube_channels
   }
 })

@@ -36,6 +36,15 @@ body {
     padding: 10px;
     box-shadow: 0 2px 3px $light-grey;
     border-radius: 3px;
+
+   
+}
+
+.error-msg{
+    color: $red;
+}
+.success-msg{
+    color: $primary-color;
 }
 
 // Small devices (landscape phones, 576px and up)

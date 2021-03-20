@@ -5,4 +5,121 @@
 body {
     background-color: $body !important;
     overflow-x: hidden;
+    margin: 0;
+}
+
+
+.circle_left, .circle_right {
+    background-color:$white;
+    height: 60vh;
+    width: 60vh;
+    border-radius: 100%;
+    position: absolute;
+    box-shadow: 0 4px 5px rgb(248, 248, 248);
+}
+
+.form-inputs{
+    border-style: solid;
+    border-color: $light-grey;
+    border-width: 1px;
+    box-shadow: 0 1px 5px $light-grey;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(249, 251, 253);
+    outline-color: $primary-color;
+}
+
+.btn-primary{
+    border: unset;
+    color: $white;
+    background-color: $inactive-link;
+    padding: 10px;
+    box-shadow: 0 2px 3px $light-grey;
+    border-radius: 3px;
+}
+
+// Small devices (landscape phones, 576px and up)
+ @media (max-width: 575px) { 
+    .circle_left {
+        top: -50%; 
+        left: -100%;
+       
+        animation: circle_left 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .circle_right {
+        top: unset;
+        bottom: 0%; 
+        right: -100%;
+        animation: circle_right 1s;
+        animation-fill-mode: forwards;
+    }
+ }
+
+@media (min-width: 576px) { 
+     .circle_left {
+        top: -100%; 
+        left: -100%;
+        animation: circle_left 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .circle_right {
+        top: 40%; 
+        right: -100%;
+        animation: circle_right 1s;
+        animation-fill-mode: forwards;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  
+    .circle_left {
+        top: -100%; 
+        left: -100%;
+        animation: circle_left 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .circle_right {
+        bottom: -20%; 
+        top: unset;
+        right: -100%;
+        animation: circle_right 1s;
+        animation-fill-mode: forwards;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    .circle_left {
+        top: -100%; 
+        left: -100%;
+        animation: circle_left 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .circle_right {
+        top: 40%; 
+        right: -100%;
+        animation: circle_right 1s;
+        animation-fill-mode: forwards;
+    }
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  
+    .circle_left {
+        top: -100%; 
+        left: -100%;
+        animation: circle_left 1s;
+        animation-fill-mode: forwards;
+    }
+    .circle_right {
+        top: 40%; 
+        right: -100%;
+        animation: circle_right 1s;
+        animation-fill-mode: forwards;
+    }
 }

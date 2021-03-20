@@ -9,12 +9,10 @@ class youtubeChannel {
     public $youtubeChannelModel;
     function __construct(){
         $this->youtubeChannelModel = new youtubeChannelModel();
-        
 
         $urlParams = explode('/', $_SERVER['REQUEST_URI']);
         $functionName = $urlParams[5];
         echo $this->$functionName();
-
    }
 
    function getYoutubeChannelInfo(){

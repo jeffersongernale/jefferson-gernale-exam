@@ -2,14 +2,10 @@
 <div>
     <div class="top_line"></div>
     <div id="nav">
-       
-        <div class="nav__brand">
-            <img src="@/assets/images/nbalogo.png" alt="nba logo" class="nav__image">
-        </div>
         <div class="nav__links">
             <router-link to="/"><b-icon-house></b-icon-house> HOME</router-link>
+            <router-link to="/channels"><b-icon-info-circle></b-icon-info-circle> CHANNELS</router-link>
             <router-link to="/about"><b-icon-collection-play></b-icon-collection-play> VIDEOS</router-link>
-            <router-link to="/about"><b-icon-info-circle></b-icon-info-circle> ABOUT US</router-link>
         </div>
       
     </div>
@@ -41,7 +37,7 @@ export default {
         a {
             color: $inactive-link;
             margin: 5px;
-            
+            text-decoration: none;
             &.router-link-exact-active {
             color: $inactive-link;
             font-family: Montserrat-Bold;   
@@ -68,6 +64,7 @@ export default {
         .nav__links
         {
             float: right;
+            margin-right: 35px;
         }
 
         

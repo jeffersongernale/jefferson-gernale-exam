@@ -19,7 +19,12 @@ class youtubeChannelJSON {
 
     function retrieveYTChannelInfo(){
         $result = $this->youtubeChannelModel->get_all_info();
-        
         return json_encode($result);
     }
+
+    function retrieveVideos(){
+        
+    }
+
+
 }

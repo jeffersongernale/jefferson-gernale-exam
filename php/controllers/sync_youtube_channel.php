@@ -12,6 +12,7 @@ class youtubeChannel {
 
         $urlParams = explode('/', $_SERVER['REQUEST_URI']);
         $functionName = $urlParams[5];
+
         echo $this->$functionName();
    }
 
@@ -77,6 +78,64 @@ class youtubeChannel {
          }
         
         return false;
+   }
+
+   function storeYTvideos(){
+     $channel_id = $_POST['channel_id'];
+     $id = $_POST['id'];
+     $res = false;
+    
+     $truncate = $this->youtubeChannelModel->truncate_channel_video($id);
+     
+     if($truncate)
+     {
+          $result = $this->getYtVideosAPI($channel_id);
+          foreach($result as $row){
+               foreach($row as $value)
+               {
+                    $data = [];
+                    $data['channel_id'] = $id;
+                    $data['video_link'] = "https://www.youtube.com/watch?v=".$value->id->videoId;
+                    $data['title'] = $value->snippet->title;
+                    $data['description'] = $value->snippet->description;
+                    $data['thumbnail'] = $value->snippet->thumbnails->default->url;
+                   
+                    $this->youtubeChannelModel->store_yt_videos($data);
+               }
+              
+          }
+          return json_encode($result);
+     }
+    
+     
+     return json_encode($res);
+     
+   }
+
+   function getYtVideosAPI($channel_id){
+     $data = [];
+     $appendString = "";
+     $nextPageToken = null;
+     for($x = 0; $x < 2; $x++)
+     {
+          
+          if($nextPageToken != null)
+          {
+               $appendString = "&pageToken={$nextPageToken}";
+          }
+          
+          $curl = curl_init();
+          curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/search?channelId={$channel_id}&key=AIzaSyAodXjap6Ptd7M7zDCvtRl6KHypk5ZtuF0&&part=snippet&order=date&maxResults=50&type=video{$appendString}");
+          curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+          $result = curl_exec($curl);
+          curl_close($curl);
+          $result = json_decode($result);    
+          $data[] = $result->items;
+          $nextPageToken = $result->nextPageToken;
+     }
+    
+ 
+     return $data;
    }
 
 }

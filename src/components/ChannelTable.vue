@@ -1,6 +1,6 @@
 <template>
     <div class="right_panel">
-        <table class="channel_table" border="1">
+        <table class="channel_table">
             <thead>
                 <tr>
                     <th style="width: 25%">Name</th>
@@ -19,12 +19,10 @@
                                 <span class="name__details-subtext">{{row.subscribers}} Subscribers</span>
                             </div>
                         </div>
-                       
-                       
                     </td>
                     <td>{{row.description}}</td>
                     <td>
-                        <button class="btn-sync" type="button"> Sync Videos</button>
+                        <button class="btn-sync" type="button" @click="sync_video(row.id,row.channel_id)"> Sync Videos</button>
                         <!-- {{row.id}} -->
                     </td>
                 </tr>
@@ -41,6 +39,15 @@ export default {
     methods:{
         get_channel_info(){
             this.$store.dispatch("get_all_channel_info")
+            .then(response => {
+                console.log(response);
+            })
+        },
+        sync_video(id, channel_id){
+            let formData = new FormData();
+            formData.append("id", id);
+            formData.append("channel_id", channel_id);
+            this.$store.dispatch("get_channel_videos", formData)
             .then(response => {
                 console.log(response);
             })
@@ -92,6 +99,7 @@ export default {
         border-collapse: collapse;
         border-radius: 10px;
         text-align: center;
+        background-color: $white;
         
         th{
             background-color: $inactive-link;

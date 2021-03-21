@@ -41,4 +41,29 @@ class youtubeChannelModel
         
         return $data;
     }
+
+    function store_yt_videos($data){
+        $stmt = $this->connection->connect()->prepare('INSERT INTO youtube_channel_videos (channel_id, video_link, title , thumbnail, description)
+        VALUES(?,?,?,?,?)');
+        $stmt->bind_param('sssss', $data["channel_id"], $data["video_link"], $data["title"],  $data["thumbnail"],  $data["description"]); 
+  
+        echo $stmt->execute();
+
+        // $sql = "INSERT INTO youtube_channel_videos (channel_id, video_link, title , description, thumbnail)
+        // VALUES ('{$data["channel_id"]}', '{$data["video_link"]}', '{$data["title"]}', '{$data["description"]}', '{$data["thumbnail"]}')";
+
+        // if (mysqli_query($this->connection->connect(), $sql)) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+    }
+
+    function truncate_channel_video($channel_id){
+        $stmt = $this->connection->connect()->prepare('DELETE FROM youtube_channel_videos WHERE channel_id = ?');
+        $stmt->bind_param('s', $channel_id); 
+        return $stmt->execute();
+    }
+
+    
 }

@@ -1,3 +1,4 @@
 module.exports = {
-  publicPath: '/jefferson-gernale-exam/'
+  publicPath: '/jefferson-gernale-exam/',
+  outputDir: 'jefferson-gernale-exam'
 }

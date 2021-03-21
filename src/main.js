@@ -10,7 +10,7 @@ import axios from 'axios'
 
 // Vue.use(BootstrapVue)
 
-axios.defaults.baseURL = 'http://localhost/codalify';
+axios.defaults.baseURL = 'http://localhost/jefferson-gernale-exam';
 Vue.use(IconsPlugin)
 
 Vue.component('BIcon', BIcon)

@@ -125,7 +125,7 @@ class youtubeChannel {
           }
           
           $curl = curl_init();
-          curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/search?channelId={$channel_id}&key=AIzaSyAodXjap6Ptd7M7zDCvtRl6KHypk5ZtuF0&&part=snippet&order=date&maxResults=50&type=video{$appendString}");
+          curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/search?channelId={$channel_id}&key=AIzaSyAodXjap6Ptd7M7zDCvtRl6KHypk5ZtuF0&&part=snippet&order=date&maxResults=5&type=video{$appendString}");
           curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
           $result = curl_exec($curl);
           curl_close($curl);

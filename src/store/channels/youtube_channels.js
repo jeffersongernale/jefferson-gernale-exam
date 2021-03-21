@@ -35,19 +35,8 @@ export default {
                 reject(error.response)
             })
         });
-    },
-    async get_channel_videos({commit}, payload){
-      
-      return new Promise((resolve, reject) => {
-          axios.post("/php/controllers/sync_youtube_channel.php/storeYTvideos", payload)
-          .then(response => {
-              resolve(response)
-          })
-          .catch(error => {
-              reject(error.response)
-          })
-      });
-  },
+    }
+  
   },
 
   getters: {

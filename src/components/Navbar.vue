@@ -5,7 +5,6 @@
         <div class="nav__links">
             <router-link to="/"><b-icon-house></b-icon-house> HOME</router-link>
             <router-link to="/channels"><b-icon-info-circle></b-icon-info-circle> CHANNELS</router-link>
-            <router-link to="/about"><b-icon-collection-play></b-icon-collection-play> VIDEOS</router-link>
         </div>
       
     </div>

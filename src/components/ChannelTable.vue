@@ -10,48 +10,59 @@
             </thead>
             <tbody>
                 <tr v-for="row in getChannels" :key="row.id">
-                    <td>
-                        <div class="name__wrapper">
-                             <img :src="row.profile_picture" alt="Image" class="profile_picture">
-                            <div class="name__details">
-                                <span class="name__details-header">{{row.name}}</span>
-                                <br>
-                                <span class="name__details-subtext">{{row.subscribers}} Subscribers</span>
+                        <td>
+                            <div class="name__wrapper">
+                                <img :src="row.profile_picture" alt="Image" class="profile_picture">
+                                <div class="name__details">
+                                    <span class="name__details-header">{{row.name}}</span>
+                                    <br>
+                                    <span class="name__details-subtext">{{row.subscribers}} Subscribers</span>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td>{{row.description}}</td>
-                    <td>
-                        <button class="btn-sync" type="button" @click="sync_video(row.id,row.channel_id)"> Sync Videos</button>
-                        <!-- {{row.id}} -->
-                    </td>
+                        </td>
+                        <td>{{row.description}}</td>
+                        <td>
+                            <button class="btn-sync" type="button" @click="sync_video(row.id,row.channel_id)"> Sync Videos</button>
+                            <button class="btn-sync" type="button" @click="showListCard(row.id)"> List of Videos</button>
+                            <!-- {{row.id}} -->
+                        </td>
                 </tr>
                 
             </tbody>
         </table>
+        <ListofVideos/>
     </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex"
+import ListofVideos from "./ListofVideos"
 export default {
     name: "ChannelTable",
+    components:{
+        ListofVideos
+    },
     methods:{
         get_channel_info(){
             this.$store.dispatch("get_all_channel_info")
             .then(response => {
-                console.log(response);
+                // console.log(response);
             })
         },
         sync_video(id, channel_id){
             let formData = new FormData();
             formData.append("id", id);
             formData.append("channel_id", channel_id);
-            this.$store.dispatch("get_channel_videos", formData)
+            this.$store.dispatch("sync_channel_videos", formData)
             .then(response => {
-                console.log(response);
+                // console.log(response);
             })
-        }
+        },
+        showListCard(channel_id)
+        {
+            this.$store.dispatch("viewListVideoCard", {id : channel_id})
+           
+        },
     },
     mounted() {
         this.get_channel_info()

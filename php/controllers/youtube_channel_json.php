@@ -13,7 +13,16 @@ class youtubeChannelJSON {
 
         $urlParams = explode('/', $_SERVER['REQUEST_URI']);
         $functionName = $urlParams[5];
-        echo $this->$functionName();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo $this->$functionName();
+        }
+        else
+        {
+            $functionName = $urlParams[5];
+            $seperate_params_function = explode('?', $functionName);
+            $functionToCall = $seperate_params_function[0];
+            echo $this->$functionToCall();  
+        }
         
    }
 
@@ -23,7 +32,8 @@ class youtubeChannelJSON {
     }
 
     function retrieveVideos(){
-        
+        $result = $this->youtubeChannelModel->get_video($_GET['id']);
+        return json_encode($result);
     }
 
 

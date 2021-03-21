@@ -65,5 +65,16 @@ class youtubeChannelModel
         return $stmt->execute();
     }
 
+    function get_video($channel_id){
+        $stmt = $this->connection->connect()->prepare('SELECT * FROM youtube_channel_videos WHERE channel_id = ?');
+        $stmt->bind_param('s', $channel_id); 
+        $stmt->execute();
+        $data = [];
+        $result = $stmt->get_result(); // get the mysqli result
+        while($row =  $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
     
 }

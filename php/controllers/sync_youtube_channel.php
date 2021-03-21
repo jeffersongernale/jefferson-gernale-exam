@@ -7,19 +7,21 @@ $call_func = new youtubeChannel();
 
 class youtubeChannel {
     public $youtubeChannelModel;
+    public $api_key = "AIzaSyAodXjap6Ptd7M7zDCvtRl6KHypk5ZtuF0";
+
     function __construct(){
         $this->youtubeChannelModel = new youtubeChannelModel();
 
         $urlParams = explode('/', $_SERVER['REQUEST_URI']);
         $functionName = $urlParams[5];
-
+     
         echo $this->$functionName();
    }
 
    function getYoutubeChannelInfo($channel_id){
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id={$channel_id}&key=AIzaSyC4hyFMKMkZ11ywVZtmCndlKFgAZjCyvB4");
+        curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id={$channel_id}&key={$this->api_key}");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
@@ -125,7 +127,7 @@ class youtubeChannel {
           }
           
           $curl = curl_init();
-          curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/search?channelId={$channel_id}&key=AIzaSyAodXjap6Ptd7M7zDCvtRl6KHypk5ZtuF0&&part=snippet&order=date&maxResults=5&type=video{$appendString}");
+          curl_setopt($curl, CURLOPT_URL, "https://youtube.googleapis.com/youtube/v3/search?channelId={$channel_id}&key={$this->api_key}&&part=snippet&order=date&maxResults=5&type=video{$appendString}");
           curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
           $result = curl_exec($curl);
           curl_close($curl);

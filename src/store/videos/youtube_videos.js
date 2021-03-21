@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   state: {
     list_card_visibility : false,
-    active_channel_video : null
+    active_channel_video : []
   },
 
   mutations: {

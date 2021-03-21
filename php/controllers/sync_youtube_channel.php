@@ -66,7 +66,7 @@ class youtubeChannel {
                }
           }
           
-          return "Channel already exits";
+          return "Something went wrong. Check your channel ID";
        
 
    }

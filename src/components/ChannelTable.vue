@@ -55,7 +55,7 @@ export default {
             formData.append("channel_id", channel_id);
             this.$store.dispatch("sync_channel_videos", formData)
             .then(response => {
-                // console.log(response);
+                this.showListCard(id);
             })
         },
         showListCard(channel_id)

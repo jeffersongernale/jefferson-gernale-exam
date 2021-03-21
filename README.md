@@ -1,19 +1,14 @@
-# codalify
+# jefferson-gernale-exam
 
-## Project setup
-```
-npm install
-```
+#Exam By Jefferson S. Gernale
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#Date Started
+2021-03-19 10:00 PM
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#Date Finished
+2021-03-21 11:32 AM
+
+
+## Used SFC-CLI 
